@@ -36,46 +36,178 @@ async function run() {
       .db("Nikahul-muslim")
       .collection("aboutWedding");
     const etcDocsCollection = client.db("Nikahul-muslim").collection("etcDocs");
+    const qualificationCollection = client
+      .db("Nikahul-muslim")
+      .collection("qualification");
+    const askingCollection = client.db("Nikahul-muslim").collection("asking");
+    const contactNumberCollection = client
+      .db("Nikahul-muslim")
+      .collection("contactNumber");
 
-    app.post("/addName", async (req, res) => {
+    app.put("/addName/:email", async (req, res) => {
+      const email = req.params.email;
       const name = req.body;
-      const result = await nameCollection.insertOne(name);
-      res.json(result);
+      const filter = { email: email };
+      const options = { upsert: true };
+      const updatedDoc = {
+        $set: name,
+      };
+      const result = await nameCollection.updateOne(
+        filter,
+        updatedDoc,
+        options
+      );
+      res.send({ result });
     });
-    app.post("/simpleData", async (req, res) => {
+    app.put("/simpleData/:email", async (req, res) => {
+      const email = req.params.email;
       const simpleData = req.body;
-      const result = await simpleDataCollection.insertOne(simpleData);
-      res.json(result);
+      const filter = { email: email };
+      const options = { upsert: true };
+      const updatedDoc = {
+        $set: simpleData,
+      };
+      const result = await simpleDataCollection.updateOne(
+        filter,
+        updatedDoc,
+        options
+      );
+      res.send({ result });
     });
-    app.post("/address", async (req, res) => {
+    app.put("/address/:email", async (req, res) => {
+      const email = req.params.email;
       const address = req.body;
-      const result = await addressCollection.insertOne(address);
-      res.json(result);
+      const filter = { email: email };
+      const options = { upsert: true };
+      const updatedDoc = {
+        $set: address,
+      };
+      const result = await addressCollection.updateOne(
+        filter,
+        updatedDoc,
+        options
+      );
+      res.send({ result });
     });
-    app.post("/education", async (req, res) => {
+    app.put("/education/:email", async (req, res) => {
+      const email = req.params.email;
       const education = req.body;
-      const result = await educationCollection.insertOne(education);
-      res.json(result);
+      const filter = { email: email };
+      const options = { upsert: true };
+      const updatedDoc = {
+        $set: education,
+      };
+      const result = await educationCollection.updateOne(
+        filter,
+        updatedDoc,
+        options
+      );
+      res.send({ result });
     });
-    app.post("/familyDetails", async (req, res) => {
+    app.put("/familyDetails/:email", async (req, res) => {
+      const email = req.params.email;
       const familyDetails = req.body;
-      const result = await familyDetailsCollection.insertOne(familyDetails);
-      res.json(result);
+      const filter = { email: email };
+      const options = { upsert: true };
+      const updatedDoc = {
+        $set: familyDetails,
+      };
+      const result = await familyDetailsCollection.updateOne(
+        filter,
+        updatedDoc,
+        options
+      );
+      res.send({ result });
     });
-    app.post("/personalDocs", async (req, res) => {
+    app.put("/personalDocs/:email", async (req, res) => {
+      const email = req.params.email;
       const personalDocs = req.body;
-      const result = await personalDocsCollection.insertOne(personalDocs);
-      res.json(result);
+      const filter = { email: email };
+      const options = { upsert: true };
+      const updatedDoc = {
+        $set: personalDocs,
+      };
+      const result = await personalDocsCollection.updateOne(
+        filter,
+        updatedDoc,
+        options
+      );
+      res.send({ result });
     });
-    app.post("/aboutWedding", async (req, res) => {
+    app.put("/aboutWedding/:email", async (req, res) => {
+      const email = req.params.email;
       const aboutWedding = req.body;
-      const result = await aboutWeddingCollection.insertOne(aboutWedding);
-      res.json(result);
+      const filter = { email: email };
+      const options = { upsert: true };
+      const updatedDoc = {
+        $set: aboutWedding,
+      };
+      const result = await aboutWeddingCollection.updateOne(
+        filter,
+        updatedDoc,
+        options
+      );
+      res.send({ result });
     });
-    app.post("/etcDocs", async (req, res) => {
+    app.put("/etcDocs/:email", async (req, res) => {
+      const email = req.params.email;
       const etcDocs = req.body;
-      const result = await etcDocsCollection.insertOne(etcDocs);
-      res.json(result);
+      const filter = { email: email };
+      const options = { upsert: true };
+      const updatedDoc = {
+        $set: etcDocs,
+      };
+      const result = await etcDocsCollection.updateOne(
+        filter,
+        updatedDoc,
+        options
+      );
+      res.send({ result });
+    });
+    app.put("/qualification/:email", async (req, res) => {
+      const email = req.params.email;
+      const qualification = req.body;
+      const filter = { email: email };
+      const options = { upsert: true };
+      const updatedDoc = {
+        $set: qualification,
+      };
+      const result = await qualificationCollection.updateOne(
+        filter,
+        updatedDoc,
+        options
+      );
+      res.send({ result });
+    });
+    app.put("/asking/:email", async (req, res) => {
+      const email = req.params.email;
+      const asking = req.body;
+      const filter = { email: email };
+      const options = { upsert: true };
+      const updatedDoc = {
+        $set: asking,
+      };
+      const result = await askingCollection.updateOne(
+        filter,
+        updatedDoc,
+        options
+      );
+      res.send({ result });
+    });
+    app.put("/contactNumber/:email", async (req, res) => {
+      const email = req.params.email;
+      const contactNumber = req.body;
+      const filter = { email: email };
+      const options = { upsert: true };
+      const updatedDoc = {
+        $set: contactNumber,
+      };
+      const result = await contactNumberCollection.updateOne(
+        filter,
+        updatedDoc,
+        options
+      );
+      res.send({ result });
     });
   } finally {
   }
